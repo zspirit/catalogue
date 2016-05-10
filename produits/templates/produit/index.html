@@ -3,18 +3,27 @@
 	{% if latest_produits_list %}
 	    {% for produit in latest_produits_list %}
 	        <div class="col-lg-12">
-	          <a class="thumbnail" href="#">
+	          <a class="thumbnail" href="{% url 'produits:detail' produit.id %}">
 	            <img class="img-responsive" src="http://placehold.it/100x100" alt="">
 	          </a>
-	  		  <h4 class="title">{{ produit.title }}
+	          {% load staticfiles %}
+	          {{ produit.get_feature_image.image.path  }}
+	  		  <h4 class="title">{{ produit.title }} 
 	  		  	<span>{{ produit.prix }} €</span>
 	  		  	<span>{{ produit.poids }} kg</span>
 	  		  </h4>
-	          <p>{{ produit.description|truncatechars:150 }}</p>
+
+	          <p>
+	          {% autoescape on %}
+	          	{{ produit.description|truncatechars:150 }}
+	          {% endautoescape %}
+	          </p>
 	          {% for tag in produit.tags.all %}
 	          	{{ tag.tag }}
 	          {% endfor %}
-	          <spna class="see"><a href="#">En savoir plus</a></spna>
+	          <spna class="see">
+	          	<a href="{% url 'produits:detail' produit.id %}">En savoir plus</a>
+	          </spna>
 	        </div>
 	    {% endfor %}
 	{% else %}
