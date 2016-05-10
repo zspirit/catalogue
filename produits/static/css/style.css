@@ -1,0 +1,32 @@
+.thumbnail {
+	float: left;
+	margin-right: 10px
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+	padding: 10px;
+	text-align: left;
+}
+
+.jumbotron .btn {
+	padding: 10px;
+	font-size: 18px;
+	float: right;
+	margin-top: 2px
+}
+
+#search {
+	padding: 10px;
+	float: right;
+}
+
+h4.title span {
+	display: block;
+	float: right;
+	margin-left: 50px
+}
+
+.see {
+	display: block;
+	float: right;
+}

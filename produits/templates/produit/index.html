@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+	{% if latest_produits_list %}
+	    {% for produit in latest_produits_list %}
+	        <div class="col-lg-12">
+	          <a class="thumbnail" href="#">
+	            <img class="img-responsive" src="http://placehold.it/100x100" alt="">
+	          </a>
+	  		  <h4 class="title">{{ produit.title }}
+	  		  	<span>{{ produit.prix }} €</span>
+	  		  	<span>{{ produit.poids }} kg</span>
+	  		  </h4>
+	          <p>{{ produit.description|truncatechars:150 }}</p>
+	          {% for tag in produit.tags.all %}
+	          	{{ tag.tag }}
+	          {% endfor %}
+	          <spna class="see"><a href="#">En savoir plus</a></spna>
+	        </div>
+	    {% endfor %}
+	{% else %}
+	    <p>Aucun produit trouvé !</p>
+	{% endif %}
+{% endblock %}
