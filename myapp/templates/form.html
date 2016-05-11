@@ -1,0 +1,30 @@
+<style type="text/css">
+	.mylabel {
+		display: block;
+		float: left;
+		width: 300px
+	}
+</style>
+<form action="" method="post">
+    {% csrf_token %}
+    {% if form %}
+    <!-- Form Errors -->
+    {% if form.errors %}
+        <ul class="errors">
+            {% for error in form.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Display Form -->
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mydiv">
+            <label class="mylabel">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+{% endif %}
+    <input type="submit" value="Submit" />
+</form>
